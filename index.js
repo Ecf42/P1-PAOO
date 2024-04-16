@@ -14,3 +14,13 @@ const obterCoordenadas = async () => {
 }
 
 obterCoordenadas()
+.then(url => {
+    axios.get(url)
+        .then(res => {
+            const feels_like = res.data.list[0].main.feels_like
+            const description = res.data.list[0].weather[0].description
+            console.log(`Sensação térmica: ${feels_like}°C'`);
+            console.log(`Descrição: ${description}`);
+            return res
+        })
+})
